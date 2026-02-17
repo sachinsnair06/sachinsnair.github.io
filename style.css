@@ -121,11 +121,19 @@
         }
 
         .header-subtitle {
-            font-size: clamp(1.25rem, 3vw, 2rem);
-            font-weight: 500;
-            margin-bottom: 3rem;
-            letter-spacing: -0.01em;
-        }
+    font-size: clamp(1.25rem, 3vw, 2rem);
+    font-weight: 500;
+    margin-bottom: 2rem;  /* Changed from 3rem to 2rem */
+    letter-spacing: -0.01em;
+}
+
+        .header-description-single {
+    font-size: 1rem;
+    line-height: 1.8;
+    color: var(--text-secondary);
+    max-width: 800px;
+}
+
 
         .header-descriptions {
             display: grid;
