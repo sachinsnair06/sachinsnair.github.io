@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sachin Sasi Nair</title>
+
+  <!-- Favicon monogram -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%234f46e5'/><text y='.9em' x='50%' text-anchor='middle' font-size='54' font-family='Inter,sans-serif' font-weight='700' fill='white'>SSN</text></svg>" />
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+  <!-- Portfolio Styles -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ── Scroll progress bar ── -->
+  <div id="scroll-progress"></div>
+
+  <!-- ── Cursor glow ── -->
+  <div id="cursor-glow"></div>
+
+  <!-- ── Dark mode toggle ── -->
+  <button class="theme-btn" id="themeBtn" title="Toggle dark mode" onclick="toggleDark()">
+    <i class="fas fa-moon" id="themeIcon"></i>
+  </button>
+
+  <!-- ============================================================
+       PROJECT MODAL
+  ============================================================ -->
+  <div class="modal-backdrop" id="modalBackdrop" onclick="closeModalOutside(event)">
+    <div class="modal" id="modal">
+      <div class="modal-header">
+        <span id="modalEmoji"></span>
+        <button class="modal-close" onclick="closeModal()"><i class="fas fa-xmark"></i></button>
+      </div>
+      <div class="modal-body">
+        <div class="modal-tags"  id="modalTags"></div>
+        <div class="modal-title" id="modalTitle"></div>
+        <div class="modal-desc"  id="modalDesc"></div>
+        <div class="modal-footer">
+          <a href="#" id="modalGithub" class="modal-btn-github" target="_blank">
+            <i class="fab fa-github"></i> View on GitHub
+          </a>
+          <a href="#" id="modalLive" class="modal-btn-live" target="_blank">
+            <i class="fas fa-arrow-up-right-from-square"></i> Live Demo
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       SMOOTH SCROLL CONTAINER
+  ============================================================ -->
+  <div id="smooth-wrapper">
+  <div id="smooth-root">
+  <div class="page">
+
+    <!-- decorative top-right illustration -->
+    <div class="grid-bg"></div>
+
+    <!-- ══════════════════════════════════════
+         HERO
+    ══════════════════════════════════════ -->
+    <div class="hero">
+      <div class="avatar">
+        <img src="https://api.dicebear.com/7.x/adventurer-neutral/svg?seed=alexcarter&backgroundColor=b6e3f4" alt="Profile" />
+      </div>
+      <h1 class="hero-name">Sachin Sasi Nair</h1>
+      <p class="hero-role">Cloud &amp; Security Engineer</p>
+      <div class="hero-status">
+        <span class="status-dot"></span>
+        Currently open to Junior cloud &amp; security roles
+      </div>
+      <div class="hero-btns">
+        <a href="#" id="resumeBtn" class="btn-primary">Resume &nbsp;&rarr;</a>
+        <a href="#contact" class="btn-outline">Connect me</a>
+      </div>
+      <div class="hero-socials">
+        <a href="#" title="X / Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+        <a href="#" title="GitHub"><i class="fa-brands fa-github"></i></a>
+        <a href="#" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+      </div>
+    </div>
+
+    <!-- ══════════════════════════════════════
+         ABOUT
+    ══════════════════════════════════════ -->
+    <div class="section-row" id="about">
+      <div class="section-label">About</div>
+      <div class="section-content">
+        <div class="about-text">
+          <p>
+            I started my career designing interfaces people actually enjoyed using. Over the last 6 years, 
+            I’ve worked across UI/UX design and web development, turning ideas into products that were both 
+            functional and user-friendly.
+          </p>
+          <p>
+            Somewhere along the way, I became more interested in what powers applications behind the scenes — networks, cloud infrastructure, and security. That curiosity slowly turned into a career transition into cloud and cybersecurity.
+          </p>
+          <p>
+            Right now, I’m focused on building hands-on skills through labs, certifications, and real-world projects while looking for junior cloud and security opportunities. I bring a mix of design thinking, problem-solving, and the ability to spend 4 hours debugging something… only to discover a missing semicolon was the villain all along.
+          </p>
+          <p>
+            I may be new to the security industry, but I’m not new to learning fast, adapting quickly, and figuring things out. I’m looking for a team willing to take a chance on someone genuinely passionate about tech — and determined to grow into someone they’ll be glad they hired.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══════════════════════════════════════
+         PROJECTS
+    ══════════════════════════════════════ -->
+    <div class="section-row" id="projects">
+      <div class="section-label">Projects</div>
+      <div class="section-content">
+        <div class="projects-grid">
+
+          <div class="project-card" onclick="openModal({
+            emoji:'☁️', title:'AWS Landing Zone',
+            tags:['AWS','Terraform','Control Tower'],
+            desc:'Automated provisioning of a secure AWS multi-account environment with SCPs, centralized logging, and compliance guardrails using Terraform and AWS Control Tower to support 200+ accounts for a fintech client.',
+            github:'https://github.com/alexcarter/aws-landing-zone', live:'#'})">
+            <div class="project-thumb">☁️</div>
+            <div class="project-info">
+              <div class="project-name">AWS Landing Zone</div>
+              <div class="project-sub">Multi-account security setup</div>
+            </div>
+          </div>
+
+          <div class="project-card" onclick="openModal({
+            emoji:'🔐', title:'IAM Audit Tool',
+            tags:['Python','AWS Lambda','IAM'],
+            desc:'A Python-based serverless tool that automatically audits AWS IAM policies and detects overly permissive roles and unused credentials. Generates detailed compliance reports triggered via AWS EventBridge.',
+            github:'https://github.com/alexcarter/iam-audit-tool', live:'#'})">
+            <div class="project-thumb">🔐</div>
+            <div class="project-info">
+              <div class="project-name">IAM Audit Tool</div>
+              <div class="project-sub">Serverless compliance scanner</div>
+            </div>
+          </div>
+
+          <div class="project-card" onclick="openModal({
+            emoji:'🛡️', title:'Threat Dashboard',
+            tags:['Azure Sentinel','KQL','Splunk'],
+            desc:'Real-time threat detection pipeline using Azure Sentinel with custom KQL rules. Integrated Slack and PagerDuty alerting for SOC teams, reducing mean alert response time by 40%.',
+            github:'https://github.com/alexcarter/threat-dashboard', live:'#'})">
+            <div class="project-thumb">🛡️</div>
+            <div class="project-info">
+              <div class="project-name">Threat Dashboard</div>
+              <div class="project-sub">SIEM detection pipeline</div>
+            </div>
+          </div>
+
+          <div class="project-card" onclick="openModal({
+            emoji:'🚀', title:'Secure CI/CD',
+            tags:['GitHub Actions','Docker','Trivy','SAST'],
+            desc:'Comprehensive DevSecOps pipeline with integrated SAST (Semgrep), container scanning (Trivy), secrets detection (Gitleaks), and DAST at every stage. Reduced production vulnerabilities by 85%.',
+            github:'https://github.com/alexcarter/secure-cicd', live:'#'})">
+            <div class="project-thumb">🚀</div>
+            <div class="project-info">
+              <div class="project-name">Secure CI/CD</div>
+              <div class="project-sub">DevSecOps pipeline</div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- ══════════════════════════════════════
+         EXPERIENCE
+    ══════════════════════════════════════ -->
+    <div class="section-row" id="experience">
+      <div class="section-label">Experience</div>
+      <div class="section-content">
+        <div class="exp-list">
+
+          <div class="exp-card">
+            <div class="exp-header">
+              <div class="exp-left">
+                <div class="exp-logo" style="background:#e8f5e9;">🟢</div>
+                <div>
+                  <div class="exp-title">UX Designer</div>
+                  <div class="exp-company">Pilot PMR</div>
+                </div>
+              </div>
+              <div class="exp-period">April 2023 – June 2023</div>
+            </div>
+            <ul class="exp-bullets">
+              <li>Collaborated within agile teams on design projects for high-end business clients, leading the rebranding and modernization of web and mobile platforms while assisting with wireframing, prototyping, and UI architecture. Worked closely with cross-functional and technical teams, presenting design solutions and communicating design rationale to stakeholders across the company. This experience strengthened my collaboration, communication, problem-solving, and detail-oriented approach — skills I now bring into cloud, networking, and cybersecurity.</li>
+              <!-- <li>Automated compliance using AWS Config and Security Hub, reducing manual audit effort by 70%.</li> -->
+            </ul>
+          </div>
+
+          <div class="exp-card">
+            <div class="exp-header">
+              <div class="exp-left">
+                <div class="exp-logo" style="background:#e3f2fd;">🔷</div>
+                <div>
+                  <div class="exp-title">UI/UX Designer</div>
+                  <div class="exp-company">Hamon Technologies</div>
+                </div>
+              </div>
+              <div class="exp-period">May 2022 – Jan 2023</div>
+            </div>
+            <ul class="exp-bullets">
+              <li>Managed the end-to-end design and implementation of B2B and B2C digital products, translating complex user and business requirements into intuitive experiences across Web, iOS, and Android platforms. Collaborated closely with engineering, product, and brand teams to shape scalable design systems while creating high-fidelity mockups and interactive prototypes using Figma and other prototyping tools. Leveraged user research, data, and inclusive design principles to build accessible and engaging experiences, while developing strong analytical thinking, adaptability, and process management skills</li>
+              <!-- <li>Built CI/CD pipelines with integrated SAST, DAST, and container scanning security gates.</li> -->
+            </ul>
+          </div>
+
+          <div class="exp-card">
+            <div class="exp-header">
+              <div class="exp-left">
+                <div class="exp-logo" style="background:#fce4ec;">🔴</div>
+                <div>
+                  <div class="exp-title">UX Designer</div>
+                  <div class="exp-company">Grasshopper Design Pvt Ltd</div>
+                </div>
+              </div>
+              <div class="exp-period">April 2018 – May 2022</div>
+            </div>
+            <ul class="exp-bullets">
+              <li>Led the end-to-end design and execution of customer-facing digital products, collaborating with cross-functional teams to launch new product lines and improve overall user experience and business outcomes. Developed intuitive interfaces, ensured timely project delivery, and facilitated communication between teams while advocating for scalable design systems and design guidelines. Thrived in fast-paced environments with a collaborative, low-ego approach, strengthening project management, adaptability, and problem-solving skills</li>
+              <!-- <li>Created incident response runbooks, reducing mean time to resolution (MTTR) by 45%.</li> -->
+            </ul>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- ══════════════════════════════════════
+         EDUCATION
+    ══════════════════════════════════════ -->
+    <div class="section-row" id="education">
+      <div class="section-label">Education</div>
+      <div class="section-content">
+        <div class="edu-card">
+          <div class="edu-header">
+            <div class="edu-left">
+              <div class="edu-logo">🎓</div>
+              <div>
+                <div class="edu-degree">Bachelor's in Computer Applications</div>
+                <div class="edu-school">MS Ramaiah College of Arts Science & Commerce</div>
+              </div>
+            </div>
+            <div class="edu-period">2015 – 2018</div>
+          </div>
+          <!-- <p class="edu-desc">
+            A significant part of the education involved practical experience through labs and
+            projects designed to enhance problem-solving skills and real-world engineering
+            readiness. Specialized in network security and distributed systems.
+          </p> -->
+        </div>
+      </div>
+    </div>
+
+    <!-- ══════════════════════════════════════
+         SKILLS + CERT BADGES + GITHUB STATS
+    ══════════════════════════════════════ -->
+    <div class="section-row" id="skills">
+      <div class="section-label">Skills</div>
+      <div class="section-content">
+
+        <!-- Skill tags -->
+        <div class="skills-wrap">
+          <span class="skill-tag">AWS</span>
+          <span class="skill-tag">Azure</span>
+          <span class="skill-tag">GCP</span>
+          <span class="skill-tag">Terraform</span>
+          <span class="skill-tag">Kubernetes</span>
+          <span class="skill-tag">Docker</span>
+          <span class="skill-tag">Python</span>
+          <span class="skill-tag">Bash</span>
+          <span class="skill-tag">IAM &amp; Zero Trust</span>
+          <span class="skill-tag">SIEM / Splunk</span>
+          <span class="skill-tag">CI/CD</span>
+          <span class="skill-tag">GitHub Actions</span>
+          <span class="skill-tag">Linux</span>
+          <span class="skill-tag">Networking</span>
+        </div>
+
+        <!-- Certification badges -->
+        <div class="cert-badges">
+          <span class="cert-badge">
+            <img src="https://img.shields.io/badge/-AWS-FF9900?style=flat&logo=amazonaws&logoColor=white" alt="AWS" />
+            AWS Solutions Architect Pro
+          </span>
+          <span class="cert-badge">
+            <img src="https://img.shields.io/badge/-AWS-FF9900?style=flat&logo=amazonaws&logoColor=white" alt="AWS" />
+            AWS Security Specialty
+          </span>
+          <span class="cert-badge">
+            <img src="https://img.shields.io/badge/-Azure-0078D4?style=flat&logo=microsoftazure&logoColor=white" alt="Azure" />
+            Azure Security Engineer
+          </span>
+          <span class="cert-badge">
+            <img src="https://img.shields.io/badge/-GCP-4285F4?style=flat&logo=googlecloud&logoColor=white" alt="GCP" />
+            GCP Security Engineer
+          </span>
+          <span class="cert-badge">
+            <img src="https://img.shields.io/badge/-ISC²-006400?style=flat&logoColor=white" alt="ISC2" />
+            CISSP
+          </span>
+          <span class="cert-badge">
+            <img src="https://img.shields.io/badge/-HashiCorp-7B42BC?style=flat&logo=terraform&logoColor=white" alt="Terraform" />
+            Terraform Associate
+          </span>
+          <span class="cert-badge">
+            <img src="https://img.shields.io/badge/-CNCF-326CE5?style=flat&logo=kubernetes&logoColor=white" alt="CKA" />
+            CKA
+          </span>
+        </div>
+
+        <!-- GitHub contribution graph -->
+        <!-- ★ SWAP YOUR GitHub username below ★ -->
+        <div class="github-stats">
+          <img
+            src="https://github-readme-stats.vercel.app/api?username=alexcarter&show_icons=true&hide_border=true&bg_color=00000000&title_color=4f46e5&icon_color=4f46e5&text_color=374151&hide=stars"
+            alt="GitHub stats"
+            onerror="this.parentElement.style.display='none'"
+          />
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ══════════════════════════════════════
+         CONTACT
+    ══════════════════════════════════════ -->
+    <div class="section-row" id="contact">
+      <div class="section-label">Contact</div>
+      <div class="section-content">
+        <div class="contact-list">
+
+          <div class="contact-item">
+            <span class="contact-label">Email:</span>
+            <a href="mailto:alex@example.com">sachinsnair.job@gmail.com</a>
+            <button class="copy-email-btn" onclick="copyEmail(this,'alex@example.com')">
+              <i class="fas fa-copy"></i> Copy
+            </button>
+          </div>
+
+          <div class="contact-item">
+            <span class="contact-label">Phone:</span>
+            <span>+1 (437) 970-9889</span>
+          </div>
+
+          <div class="contact-item">
+            <span class="contact-label">GitHub:</span>
+            <a href="#">https://github.com/sachinsnair06</a>
+          </div>
+
+          <div class="contact-item">
+            <span class="contact-label">LinkedIn:</span>
+            <a href="#">https://www.linkedin.com/in/sachinsnair06/</a>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- ══════════════════════════════════════
+         FOOTER
+    ══════════════════════════════════════ -->
+    <div class="footer">
+      © 2026 Sachin Sasi Nair &bull; All rights reserved
+    </div>
+
+  </div><!-- /page -->
+  </div><!-- /smooth-root -->
+  </div><!-- /smooth-wrapper -->
+
+  <!-- Scripts -->
+  <script src="script.js"></script>
+
+</body>
+</html>
